@@ -4,6 +4,7 @@ export interface Template {
   category: string;
   description: string;
   style: string;
+  type: "boda" | "despedida";
   colors: {
     primary: string;
     secondary: string;
@@ -23,6 +24,7 @@ export const templates: Template[] = [
     category: "Floral",
     description:
       "Delicadas flores y tonos suaves para una boda romantica en jardin.",
+    type: "boda",
     style: "romantic",
     colors: {
       primary: "#4a5568",
@@ -40,6 +42,7 @@ export const templates: Template[] = [
     category: "Elegante",
     description:
       "Lujo y sofisticacion con tonos oscuros y detalles dorados.",
+    type: "boda",
     style: "elegant",
     colors: {
       primary: "#1a1a2e",
@@ -57,6 +60,7 @@ export const templates: Template[] = [
     category: "Minimalista",
     description:
       "Lineas limpias y tipografia moderna para parejas contemporaneas.",
+    type: "boda",
     style: "minimal",
     colors: {
       primary: "#1a1a1a",
@@ -74,6 +78,7 @@ export const templates: Template[] = [
     category: "Rustico",
     description:
       "Inspirado en los vinedos de la Toscana. Calidez y naturaleza.",
+    type: "boda",
     style: "rustic",
     colors: {
       primary: "#5c4033",
@@ -90,6 +95,7 @@ export const templates: Template[] = [
     category: "Art Deco",
     description:
       "Geometria dorada y glamour de los años 20 para una celebracion opulenta.",
+    type: "boda",
     style: "artdeco",
     colors: {
       primary: "#1a1a1a",
@@ -107,6 +113,7 @@ export const templates: Template[] = [
     category: "Playa",
     description:
       "Tonos azules y brisa marina para una boda junto al mar.",
+    type: "boda",
     style: "beach",
     colors: {
       primary: "#1e3a5f",
@@ -123,6 +130,7 @@ export const templates: Template[] = [
     category: "Botanico",
     description:
       "Ilustraciones botanicas detalladas con un toque vintage elegante.",
+    type: "boda",
     style: "botanical",
     colors: {
       primary: "#2d4a3e",
@@ -140,6 +148,7 @@ export const templates: Template[] = [
     category: "Acuarela",
     description:
       "Trazos de acuarela en tonos calidos que evocan un atardecer magico.",
+    type: "boda",
     style: "watercolor",
     colors: {
       primary: "#5c2e4a",
@@ -156,6 +165,7 @@ export const templates: Template[] = [
     category: "Clasico",
     description:
       "Tipografia caligrafica clasica sobre fondo marfil. Tradicion atemporal.",
+    type: "boda",
     style: "classic",
     colors: {
       primary: "#2c2c2c",
@@ -165,6 +175,108 @@ export const templates: Template[] = [
       text: "#2c2c2c",
     },
     tags: ["clasico", "caligrafia", "tradicional", "marfil"],
+  },
+  // ===== DESPEDIDAS DE SOLTERO/A =====
+  {
+    id: "neon-party",
+    name: "Neon Party",
+    category: "Neon",
+    description: "Luces neon, colores vibrantes y energia pura para una noche epica.",
+    type: "despedida",
+    style: "neon",
+    colors: {
+      primary: "#0f0f1a",
+      secondary: "#1a0a2e",
+      accent: "#ff00ff",
+      background: "#0a0a0f",
+      text: "#ffffff",
+    },
+    tags: ["neon", "fiesta", "nocturno", "vibrante"],
+    popular: true,
+  },
+  {
+    id: "pink-glam",
+    name: "Pink Glam",
+    category: "Glam",
+    description: "Rosa, brillos y glamour total para la despedida de la novia.",
+    type: "despedida",
+    style: "pinkglam",
+    colors: {
+      primary: "#2d1b2e",
+      secondary: "#fce4ec",
+      accent: "#e91e63",
+      background: "#1a0a1a",
+      text: "#ffffff",
+    },
+    tags: ["rosa", "glam", "brillos", "soltera"],
+    popular: true,
+  },
+  {
+    id: "vegas-night",
+    name: "Vegas Night",
+    category: "Casino",
+    description: "Estilo Las Vegas. Dorado, dados y una noche de apuestas y diversión.",
+    type: "despedida",
+    style: "vegas",
+    colors: {
+      primary: "#1a1a1a",
+      secondary: "#2d2d2d",
+      accent: "#ffd700",
+      background: "#0d0d0d",
+      text: "#ffffff",
+    },
+    tags: ["vegas", "casino", "dorado", "lujo"],
+    popular: true,
+  },
+  {
+    id: "tropical-vibes",
+    name: "Tropical Vibes",
+    category: "Pool Party",
+    description: "Palmeras, flamencos y colores tropicales. Pool party perfecta.",
+    type: "despedida",
+    style: "tropical",
+    colors: {
+      primary: "#004d40",
+      secondary: "#e0f7fa",
+      accent: "#ff6f00",
+      background: "#002020",
+      text: "#ffffff",
+    },
+    tags: ["tropical", "pool", "verano", "flamenco"],
+    new: true,
+  },
+  {
+    id: "disco-fever",
+    name: "Disco Fever",
+    category: "Retro",
+    description: "Bola de espejos, colores retro y la fiebre del disco para bailar toda la noche.",
+    type: "despedida",
+    style: "disco",
+    colors: {
+      primary: "#1a0533",
+      secondary: "#4a148c",
+      accent: "#ffab00",
+      background: "#0d0020",
+      text: "#ffffff",
+    },
+    tags: ["disco", "retro", "80s", "baile"],
+    new: true,
+  },
+  {
+    id: "cerveza-bros",
+    name: "Cerveza & Bros",
+    category: "Soltero",
+    description: "Para los pibes. Cerveza, asado y la ultima noche de soltero.",
+    type: "despedida",
+    style: "bros",
+    colors: {
+      primary: "#1b2838",
+      secondary: "#2d3e50",
+      accent: "#f39c12",
+      background: "#0d1520",
+      text: "#ffffff",
+    },
+    tags: ["soltero", "cerveza", "bros", "asado"],
   },
 ];
 
@@ -179,4 +291,14 @@ export const categories = [
   "Botanico",
   "Acuarela",
   "Clasico",
+];
+
+export const despedidaCategories = [
+  "Todos",
+  "Neon",
+  "Glam",
+  "Casino",
+  "Pool Party",
+  "Retro",
+  "Soltero",
 ];

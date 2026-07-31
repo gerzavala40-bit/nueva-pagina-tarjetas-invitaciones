@@ -4,6 +4,10 @@ import {
   MessageCircle, Sparkles, Vote, CreditCard, Clock,
   Wine, Star, ArrowRight, CheckCircle2, Zap,
 } from "lucide-react";
+import { templates } from "@/data/templates";
+import InvitationCard from "@/components/InvitationCard";
+
+const despedidaTemplates = templates.filter((t) => t.type === "despedida");
 
 export default function DespedidasPage() {
   return (
@@ -70,6 +74,36 @@ export default function DespedidasPage() {
 
       {/* Tipos de despedida */}
       <section className="py-20 lg:py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <p className="text-purple-500 text-xs tracking-[0.3em] uppercase mb-3">Nuestros disenos</p>
+            <h2 className="font-[family-name:var(--font-playfair)] text-3xl lg:text-4xl text-primary mb-4">
+              Plantillas de Despedida
+            </h2>
+            <p className="text-muted text-sm max-w-lg mx-auto">
+              Elegí el estilo que más te represente. Cada plantilla es 100% personalizable.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {despedidaTemplates.map((template) => (
+              <InvitationCard key={template.id} template={template} />
+            ))}
+          </div>
+
+          <div className="text-center">
+            <p className="text-muted text-sm mb-4">No encontras el estilo ideal?</p>
+            <a href="https://wa.me/5491112345678?text=Hola!%20Quiero%20una%20invitacion%20de%20despedida%20personalizada"
+              target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-3 text-sm tracking-wider uppercase rounded-full hover:from-pink-600 hover:to-purple-700 transition-all">
+              <MessageCircle size={16} /> Pedila a medida por WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Tipos de evento */}
+      <section className="py-20 lg:py-28 bg-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <p className="text-purple-500 text-xs tracking-[0.3em] uppercase mb-3">Para todos los estilos</p>
