@@ -4,8 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import {
   Heart, MapPin, Clock, Calendar, Music, Utensils, Camera, Gift,
   X, ChevronLeft, ChevronRight, Play, Pause, Volume2, VolumeX,
-  MessageCircle, QrCode, Copy, Check, Send, Smartphone, Monitor,
-  Image as ImageIcon, Sparkles
+  MessageCircle, Copy, Check, Send, Sparkles
 } from "lucide-react";
 
 export default function InvitacionReal() {
@@ -22,20 +21,6 @@ export default function InvitacionReal() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [chatMessages, setChatMessages] = useState([
-    { user: "Maria", color: "#e91e63", msg: "Que hermosa la ceremonia! 😍", time: "22:15" },
-    { user: "Carlos", color: "#2196f3", msg: "Vamos a bailar toda la noche! 🕺", time: "22:16" },
-    { user: "Laura", color: "#9c27b0", msg: "Los novios estan radiantes ✨", time: "22:17" },
-  ]);
-  const [newChatMsg, setNewChatMsg] = useState("");
-  const [partyCamPhotos] = useState([
-    { user: "Sofia", src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=400&fit=crop" },
-    { user: "Diego", src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&h=400&fit=crop" },
-    { user: "Lucia", src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=400&h=400&fit=crop" },
-    { user: "Martin", src: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400&h=400&fit=crop" },
-    { user: "Ana", src: "https://images.unsplash.com/photo-1606216794079-73f85bbd57d5?w=400&h=400&fit=crop" },
-    { user: "Pedro", src: "https://images.unsplash.com/photo-1529636798458-92182e662485?w=400&h=400&fit=crop" },
-  ]);
 
   const audioRef = useRef<HTMLAudioElement>(null);
   const weddingDate = new Date("2025-11-22T18:00:00");
@@ -136,14 +121,6 @@ export default function InvitacionReal() {
     const msg = `Hola! Soy ${guestName}. ${rsvpStatus === "si" ? "Confirmo asistencia a la boda de Ana & Pedro. Somos " + guestCount + " persona(s). Menu: " + menuChoice : "Lamentablemente no podre asistir a la boda de Ana & Pedro."}`;
     window.open(`https://wa.me/5491112345678?text=${encodeURIComponent(msg)}`, "_blank");
     setSubmitted(true);
-  };
-
-  // Party Chat send
-  const sendChatMsg = () => {
-    if (newChatMsg.trim()) {
-      setChatMessages((prev) => [...prev, { user: "Vos", color: "#4caf50", msg: newChatMsg, time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) }]);
-      setNewChatMsg("");
-    }
   };
 
 
@@ -559,119 +536,29 @@ export default function InvitacionReal() {
       </section>
 
 
-      {/* ===== PARTY CHAT DEMO ===== */}
-      <section className="py-20 bg-[#2c2c2c] animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-[#c9a96e]/20 text-[#c9a96e] px-3 py-1 rounded-full text-[10px] tracking-wider uppercase mb-4">
-              <Sparkles size={12} /> Nuevo
-            </div>
-            <h2 className="font-[family-name:var(--font-playfair)] text-3xl sm:text-4xl text-white mb-4">Party Chat en Vivo</h2>
-            <p className="text-white/60 text-sm max-w-lg mx-auto">
-              Un chat grupal exclusivo para tu fiesta. Cada mesa tiene su QR: los invitados lo escanean y empiezan a hablar entre todos.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            {/* Features */}
-            <div className="space-y-6">
-              {[
-                { icon: <QrCode size={20} />, title: "QR por mesa", desc: "Cada mesa tiene su propio QR. Los invitados lo escanean y entran sin registrarse." },
-                { icon: <MessageCircle size={20} />, title: "Chat general + por mesa", desc: "Un chat para toda la fiesta y otro privado solo para tu mesa." },
-                { icon: <Smartphone size={20} />, title: "Zumbidos y colores", desc: "Mandale un zumbido que sacude la pantalla! Cada invitado elige su color." },
-                { icon: <Clock size={20} />, title: "Solo dura tu fiesta", desc: "El chat se activa cuando vos quieras y se cierra al terminar. Privado y exclusivo." },
-              ].map((item, i) => (
-                <div key={i} className="flex items-start gap-4">
-                  <div className="text-[#c9a96e] flex-shrink-0 mt-0.5">{item.icon}</div>
-                  <div>
-                    <h3 className="text-white text-sm font-medium mb-1">{item.title}</h3>
-                    <p className="text-white/50 text-xs leading-relaxed">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Chat Demo */}
-            <div className="bg-[#1a1a1a] rounded-xl border border-white/10 overflow-hidden">
-              <div className="bg-[#c9a96e] px-4 py-3 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <MessageCircle size={16} className="text-white" />
-                  <span className="text-white text-sm font-medium">Mesa 5 - Chat</span>
-                </div>
-                <span className="text-white/80 text-xs">3 online</span>
+      {/* ===== PARTY TOOLS (Floating - Solo activos durante el evento) ===== */}
+      <section className="py-12 bg-[#2c2c2c] animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
+        <div className="max-w-2xl mx-auto px-6 text-center">
+          <p className="text-[#c9a96e] text-xs tracking-[0.3em] uppercase mb-3">El dia de la fiesta</p>
+          <h2 className="font-[family-name:var(--font-playfair)] text-2xl text-white mb-3">Herramientas del Evento</h2>
+          <p className="text-white/50 text-xs mb-8">Estos botones se activan el dia de la fiesta. Escanea el QR de tu mesa!</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button disabled className="px-6 py-4 bg-white/5 border border-white/10 text-white/40 rounded-lg flex items-center justify-center gap-3 cursor-not-allowed">
+              <Camera size={20} />
+              <div className="text-left">
+                <p className="text-sm font-medium">Party Cam</p>
+                <p className="text-[10px] text-white/30">Subi fotos al muro en vivo</p>
               </div>
-              <div className="p-4 space-y-3 h-60 overflow-y-auto">
-                {chatMessages.map((msg, i) => (
-                  <div key={i} className={`flex flex-col ${msg.user === "Vos" ? "items-end" : "items-start"}`}>
-                    <div className={`max-w-[80%] rounded-lg px-3 py-2 ${msg.user === "Vos" ? "bg-[#c9a96e]/20" : "bg-white/5"}`}>
-                      <p className="text-xs font-medium mb-0.5" style={{ color: msg.color }}>{msg.user}</p>
-                      <p className="text-white/80 text-xs">{msg.msg}</p>
-                    </div>
-                    <span className="text-white/30 text-[9px] mt-0.5">{msg.time}</span>
-                  </div>
-                ))}
+            </button>
+            <button disabled className="px-6 py-4 bg-white/5 border border-white/10 text-white/40 rounded-lg flex items-center justify-center gap-3 cursor-not-allowed">
+              <MessageCircle size={20} />
+              <div className="text-left">
+                <p className="text-sm font-medium">Party Chat</p>
+                <p className="text-[10px] text-white/30">Chat grupal de la fiesta</p>
               </div>
-              <div className="border-t border-white/10 p-3 flex gap-2">
-                <input type="text" value={newChatMsg} onChange={(e) => setNewChatMsg(e.target.value)}
-                  onKeyDown={(e) => e.key === "Enter" && sendChatMsg()}
-                  placeholder="Escribi un mensaje..."
-                  className="flex-1 bg-white/5 border border-white/10 rounded-sm px-3 py-2 text-white text-xs focus:outline-none focus:border-[#c9a96e]" />
-                <button onClick={sendChatMsg} className="px-3 py-2 bg-[#c9a96e] text-white rounded-sm hover:bg-[#b08d4f] transition-colors">
-                  <Send size={14} />
-                </button>
-              </div>
-            </div>
+            </button>
           </div>
-        </div>
-      </section>
-
-
-      {/* ===== PARTY CAM ===== */}
-      <section className="py-20 bg-white animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-[#c9a96e]/10 text-[#c9a96e] px-3 py-1 rounded-full text-[10px] tracking-wider uppercase mb-4">
-              <Camera size={12} /> Incluido en Premium
-            </div>
-            <h2 className="font-[family-name:var(--font-playfair)] text-3xl sm:text-4xl text-[#2c2c2c] mb-4">Party Cam</h2>
-            <p className="text-[#5c4a3a] text-sm max-w-lg mx-auto">
-              Un muro de fotos en tiempo real. Los invitados sacan fotos, escanean un QR, y aparecen al instante en la pantalla del salon.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            {/* Polaroid Grid */}
-            <div className="grid grid-cols-2 gap-4">
-              {partyCamPhotos.slice(0, 4).map((photo, i) => (
-                <div key={i} className="bg-white p-2 rounded-sm shadow-lg transform hover:rotate-0 transition-transform"
-                  style={{ transform: `rotate(${(i % 2 === 0 ? -2 : 2) + Math.random() * 2}deg)` }}>
-                  <img src={photo.src} alt={`Foto de ${photo.user}`} className="w-full aspect-square object-cover rounded-sm" loading="lazy" />
-                  <div className="pt-2 pb-1 text-center">
-                    <p className="text-xs text-[#2c2c2c] font-medium">{photo.user}</p>
-                    <p className="text-[9px] text-[#8b7355]">hace {i + 1} min</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Features */}
-            <div className="space-y-6">
-              {[
-                { icon: <Camera size={20} />, title: "Subida instantanea", desc: "El invitado saca una foto, escanea el QR y la sube en 2 toques. Sin descargar nada." },
-                { icon: <Monitor size={20} />, title: "Pantalla en vivo", desc: "Las fotos aparecen al instante en la pantalla del salon. Se actualiza sola cada 3 segundos." },
-                { icon: <ImageIcon size={20} />, title: "Estilo polaroid", desc: "Cada foto se muestra como una polaroid con el nombre del invitado. Queda hermoso en el proyector." },
-                { icon: <Gift size={20} />, title: "Recuerdo para los novios", desc: "Despues del evento recibis todas las fotos. Momentos unicos desde la perspectiva de tus invitados." },
-              ].map((item, i) => (
-                <div key={i} className="flex items-start gap-4">
-                  <div className="text-[#c9a96e] flex-shrink-0 mt-0.5">{item.icon}</div>
-                  <div>
-                    <h3 className="text-[#2c2c2c] text-sm font-medium mb-1">{item.title}</h3>
-                    <p className="text-[#5c4a3a] text-xs leading-relaxed">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <p className="text-white/30 text-[10px] mt-4 tracking-wider">DISPONIBLE EL 22/11/2025 A PARTIR DE LAS 20:00 HS</p>
         </div>
       </section>
 

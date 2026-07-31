@@ -15,6 +15,7 @@ import {
   Send,
   Shield,
   Zap,
+  Camera,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -362,6 +363,139 @@ export default function FeaturesPage() {
           </blockquote>
           <p className="text-accent text-sm">Andrea M.</p>
           <p className="text-white/40 text-xs mt-1">Boda en Marzo 2025</p>
+        </div>
+      </section>
+
+      {/* Party Chat Section */}
+      <section className="py-20 lg:py-28 bg-primary">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-accent/20 text-accent px-3 py-1 rounded-full text-[10px] tracking-wider uppercase mb-4">
+                <Zap size={12} /> Nuevo
+              </div>
+              <h2 className="font-[family-name:var(--font-playfair)] text-2xl lg:text-3xl text-white mb-6">
+                Party Chat en Vivo
+              </h2>
+              <p className="text-white/60 text-sm leading-relaxed mb-8">
+                Un chat grupal exclusivo para la fiesta. Cada mesa tiene su QR:
+                los invitados lo escanean, eligen un apodo y empiezan a hablar
+                entre todos. Ideal para casamientos donde no todos se conocen.
+              </p>
+              <div className="space-y-4">
+                {[
+                  { title: "QR por mesa", desc: "Cada mesa tiene su propio QR. Los invitados lo escanean y entran sin registrarse." },
+                  { title: "Chat general + por mesa", desc: "Un chat para toda la fiesta y otro privado solo para tu mesa." },
+                  { title: "Zumbidos y colores", desc: "Mandale un zumbido que sacude la pantalla! Cada invitado elige su color de nick." },
+                  { title: "Solo dura tu fiesta", desc: "El chat se activa cuando vos quieras y se cierra al terminar." },
+                ].map((item) => (
+                  <div key={item.title} className="flex items-start gap-3">
+                    <CheckCircle2 size={14} className="text-accent flex-shrink-0 mt-0.5" />
+                    <div>
+                      <span className="text-white text-sm font-medium">{item.title}</span>
+                      <p className="text-white/40 text-xs">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className="text-accent text-xs mt-6 tracking-wider uppercase">
+                Incluido en el plan Premium
+              </p>
+            </div>
+
+            {/* Chat mockup */}
+            <div className="bg-[#1a1a1a] rounded-xl border border-white/10 overflow-hidden shadow-2xl">
+              <div className="bg-accent px-4 py-3 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <MessageSquare size={16} className="text-white" />
+                  <span className="text-white text-sm font-medium">Mesa 5 - Chat</span>
+                </div>
+                <span className="text-white/80 text-xs">4 online</span>
+              </div>
+              <div className="p-4 space-y-3 h-52">
+                {[
+                  { user: "Maria", color: "#e91e63", msg: "Que hermosa la ceremonia! 😍" },
+                  { user: "Carlos", color: "#2196f3", msg: "Vamos a bailar toda la noche! 🕺" },
+                  { user: "Laura", color: "#9c27b0", msg: "Los novios estan radiantes ✨" },
+                  { user: "Diego", color: "#4caf50", msg: "Alguien sabe el nombre del DJ?" },
+                ].map((msg, i) => (
+                  <div key={i} className="flex flex-col items-start">
+                    <div className="max-w-[80%] rounded-lg px-3 py-2 bg-white/5">
+                      <p className="text-xs font-medium mb-0.5" style={{ color: msg.color }}>{msg.user}</p>
+                      <p className="text-white/80 text-xs">{msg.msg}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="border-t border-white/10 p-3 flex gap-2">
+                <div className="flex-1 bg-white/5 border border-white/10 rounded-sm px-3 py-2 text-white/30 text-xs">
+                  Escribi un mensaje...
+                </div>
+                <div className="px-3 py-2 bg-accent text-white rounded-sm">
+                  <Send size={14} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Party Cam Section */}
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Polaroid mockup */}
+            <div className="grid grid-cols-2 gap-4 order-2 lg:order-1">
+              {[
+                { user: "Sofia", color: "from-rose-100 to-rose-200" },
+                { user: "Diego", color: "from-blue-100 to-blue-200" },
+                { user: "Lucia", color: "from-amber-100 to-amber-200" },
+                { user: "Martin", color: "from-green-100 to-green-200" },
+              ].map((photo, i) => (
+                <div key={i} className="bg-white p-2 rounded-sm shadow-lg border border-border"
+                  style={{ transform: `rotate(${i % 2 === 0 ? -2 : 2}deg)` }}>
+                  <div className={`w-full aspect-square rounded-sm bg-gradient-to-br ${photo.color} flex items-center justify-center`}>
+                    <Camera size={24} className="text-muted/30" />
+                  </div>
+                  <div className="pt-2 pb-1 text-center">
+                    <p className="text-xs text-primary font-medium">{photo.user}</p>
+                    <p className="text-[9px] text-muted">hace {i + 1} min</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Content */}
+            <div className="order-1 lg:order-2">
+              <div className="inline-flex items-center gap-2 bg-accent/10 text-accent px-3 py-1 rounded-full text-[10px] tracking-wider uppercase mb-4">
+                <Camera size={12} /> Incluido en Premium
+              </div>
+              <h2 className="font-[family-name:var(--font-playfair)] text-2xl lg:text-3xl text-primary mb-6">
+                Party Cam
+              </h2>
+              <p className="text-muted text-sm leading-relaxed mb-8">
+                Un muro de fotos en tiempo real para tu fiesta. Los invitados
+                sacan fotos, las suben escaneando un QR, y aparecen al instante
+                en la pantalla gigante del salon.
+              </p>
+              <div className="space-y-4">
+                {[
+                  { title: "Subida instantanea", desc: "El invitado saca una foto, escanea el QR y la sube en 2 toques. Sin descargar nada." },
+                  { title: "Pantalla en vivo", desc: "Las fotos aparecen al instante en la pantalla del salon. Se actualiza sola cada 3 segundos." },
+                  { title: "Estilo polaroid", desc: "Cada foto se muestra como una polaroid con el nombre del invitado." },
+                  { title: "Recuerdo para los novios", desc: "Despues del evento recibis todas las fotos que subieron tus invitados." },
+                ].map((item) => (
+                  <div key={item.title} className="flex items-start gap-3">
+                    <CheckCircle2 size={14} className="text-accent flex-shrink-0 mt-0.5" />
+                    <div>
+                      <span className="text-primary text-sm font-medium">{item.title}</span>
+                      <p className="text-muted text-xs">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
