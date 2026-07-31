@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Heart, MapPin, Clock, Calendar, Music, Utensils, Camera, Gift } from "lucide-react";
+import Image from "next/image";
+import { Heart, MapPin, Clock, Calendar, Music, Utensils, Camera, Gift, X, ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function InvitacionReal() {
   const [timeLeft, setTimeLeft] = useState({ dias: 0, horas: 0, minutos: 0, segundos: 0 });
@@ -11,9 +12,73 @@ export default function InvitacionReal() {
   const [songRequest, setSongRequest] = useState("");
   const [showRsvpForm, setShowRsvpForm] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
-  // Wedding date: March 22, 2025 at 18:00
+  // Wedding date: November 22, 2025 at 18:00
   const weddingDate = new Date("2025-11-22T18:00:00");
+
+  const galleryImages = [
+    {
+      src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=1000&fit=crop",
+      alt: "Ana y Pedro - Sesion de compromiso",
+      caption: "Nuestra sesion de compromiso",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1606216794079-73f85bbd57d5?w=800&h=600&fit=crop",
+      alt: "Anillos de compromiso",
+      caption: "El momento del si",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1529636798458-92182e662485?w=800&h=1000&fit=crop",
+      alt: "Pareja caminando",
+      caption: "Caminando juntos",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&h=600&fit=crop",
+      alt: "Ramo de flores",
+      caption: "Los detalles que nos enamoran",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&h=600&fit=crop",
+      alt: "Pareja al atardecer",
+      caption: "Nuestro atardecer favorito",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&h=1000&fit=crop",
+      alt: "Celebracion",
+      caption: "Celebrando el amor",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop",
+      alt: "Manos entrelazadas",
+      caption: "Siempre de la mano",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&h=1000&fit=crop",
+      alt: "Beso romantico",
+      caption: "Nuestro primer viaje juntos",
+    },
+  ];
+
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    document.body.style.overflow = "auto";
+  };
+
+  const nextImage = () => {
+    setLightboxIndex((prev) => (prev + 1) % galleryImages.length);
+  };
+
+  const prevImage = () => {
+    setLightboxIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+  };
 
 
   useEffect(() => {
@@ -194,8 +259,97 @@ export default function InvitacionReal() {
       </section>
 
 
-      {/* Event Details */}
+      {/* Photo Gallery */}
       <section className="py-20 bg-[#f9efe5]">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <p className="text-[#c9a96e] text-xs tracking-[0.3em] uppercase mb-3">
+              Momentos Especiales
+            </p>
+            <h2 className="font-[family-name:var(--font-playfair)] text-3xl sm:text-4xl text-[#2c2c2c] mb-4">
+              Nuestra Galeria
+            </h2>
+            <p className="text-[#5c4a3a] text-sm max-w-lg mx-auto">
+              Algunos de los momentos mas bonitos que hemos compartido juntos.
+            </p>
+          </div>
+
+          {/* Masonry Grid */}
+          <div className="columns-2 md:columns-3 gap-4 space-y-4">
+            {galleryImages.map((image, index) => (
+              <div
+                key={index}
+                className="break-inside-avoid cursor-pointer group relative overflow-hidden rounded-lg"
+                onClick={() => openLightbox(index)}
+              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-auto object-cover rounded-lg transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 rounded-lg flex items-end">
+                  <div className="p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-full">
+                    <p className="text-white text-xs font-light tracking-wider">
+                      {image.caption}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Lightbox */}
+      {lightboxOpen && (
+        <div className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4">
+          {/* Close button */}
+          <button
+            onClick={closeLightbox}
+            className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-10"
+          >
+            <X size={28} />
+          </button>
+
+          {/* Previous */}
+          <button
+            onClick={prevImage}
+            className="absolute left-4 md:left-8 text-white/70 hover:text-white transition-colors z-10 p-2"
+          >
+            <ChevronLeft size={36} />
+          </button>
+
+          {/* Image */}
+          <div className="max-w-4xl max-h-[85vh] flex flex-col items-center">
+            <img
+              src={galleryImages[lightboxIndex].src}
+              alt={galleryImages[lightboxIndex].alt}
+              className="max-w-full max-h-[75vh] object-contain rounded-lg"
+            />
+            <div className="mt-4 text-center">
+              <p className="text-white/80 text-sm font-light">
+                {galleryImages[lightboxIndex].caption}
+              </p>
+              <p className="text-white/40 text-xs mt-1">
+                {lightboxIndex + 1} / {galleryImages.length}
+              </p>
+            </div>
+          </div>
+
+          {/* Next */}
+          <button
+            onClick={nextImage}
+            className="absolute right-4 md:right-8 text-white/70 hover:text-white transition-colors z-10 p-2"
+          >
+            <ChevronRight size={36} />
+          </button>
+        </div>
+      )}
+
+      {/* Event Details */}
+      <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-14">
             <p className="text-[#c9a96e] text-xs tracking-[0.3em] uppercase mb-3">
