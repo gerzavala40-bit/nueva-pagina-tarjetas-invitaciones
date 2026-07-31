@@ -217,13 +217,8 @@ export default function InvitacionJulianaMateo() {
           <div className="w-16 h-px bg-gradient-to-l from-transparent to-[#d4af37]"></div>
         </div>
 
-        {/* CONFIRMAR ASISTENCIA link */}
-        <a href="#rsvp" className="relative z-10 border border-[#d4af37] px-8 py-3 text-[#d4af37] text-xs tracking-[0.3em] uppercase hover:bg-[#d4af37] hover:text-black transition-colors">
-          CONFIRMAR ASISTENCIA
-        </a>
-
         {/* Tagline */}
-        <p className="relative z-10 text-white/50 text-sm italic mt-6 text-center max-w-xs">
+        <p className="relative z-10 text-white/50 text-sm italic text-center max-w-xs">
           Queremos celebrar este dia tan especial junto a ti.
         </p>
 
@@ -231,6 +226,13 @@ export default function InvitacionJulianaMateo() {
         <button onClick={togglePlay} className="relative z-10 mt-8 inline-flex items-center gap-2 px-5 py-2 border border-[#d4af37]/30 text-[#d4af37] text-xs tracking-wider uppercase rounded-full hover:bg-[#d4af37]/10 transition-colors">
           <Music size={14} /> {isPlaying ? "Musica sonando" : "Escuchar nuestra cancion"}
         </button>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <div className="w-5 h-8 border border-[#d4af37]/40 rounded-full flex items-start justify-center p-1">
+            <div className="w-1 h-2 bg-[#d4af37]/60 rounded-full"></div>
+          </div>
+        </div>
       </section>
 
 
@@ -250,6 +252,36 @@ export default function InvitacionJulianaMateo() {
                   <span className="text-3xl sm:text-4xl font-bold text-white">{String(item.value).padStart(2, "0")}</span>
                 </div>
                 <p className="text-[#d4af37]/60 text-[10px] tracking-wider uppercase mt-2">{item.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== PHOTO GALLERY ===== */}
+      <section className="py-16 bg-black border-t border-[#d4af37]/10 animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <p className="text-[#d4af37] text-xs tracking-[0.3em] uppercase mb-3">Momentos</p>
+            <h2 className="text-white text-3xl font-black uppercase tracking-tight">Nuestra Galeria</h2>
+          </div>
+          <div className="columns-2 md:columns-3 gap-3 space-y-3">
+            {[
+              { src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=800&fit=crop", caption: "Nuestra primera foto juntos" },
+              { src: "https://images.unsplash.com/photo-1606216794079-73f85bbd57d5?w=600&h=450&fit=crop", caption: "El anillo" },
+              { src: "https://images.unsplash.com/photo-1529636798458-92182e662485?w=600&h=800&fit=crop", caption: "Siempre caminando juntos" },
+              { src: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&h=450&fit=crop", caption: "Los detalles" },
+              { src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&h=450&fit=crop", caption: "Nuestro atardecer" },
+              { src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&h=800&fit=crop", caption: "Celebrando" },
+            ].map((image, index) => (
+              <div key={index} className="break-inside-avoid group relative overflow-hidden rounded-lg border border-[#d4af37]/10">
+                <img src={image.src} alt={image.caption}
+                  className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-end">
+                  <div className="p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-full">
+                    <p className="text-[#d4af37] text-xs">{image.caption}</p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
