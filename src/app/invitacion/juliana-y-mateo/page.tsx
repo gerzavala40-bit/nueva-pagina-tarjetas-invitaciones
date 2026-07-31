@@ -11,6 +11,8 @@ export default function InvitacionJulianaMateo() {
   const [rsvpStatus, setRsvpStatus] = useState<string | null>(null);
   const [guestName, setGuestName] = useState("");
   const [guestCount, setGuestCount] = useState("1");
+  const [menuChoice, setMenuChoice] = useState("");
+  const [songRequest, setSongRequest] = useState("");
   const [showRsvpForm, setShowRsvpForm] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -72,7 +74,7 @@ export default function InvitacionJulianaMateo() {
   };
 
   const sendWhatsApp = () => {
-    const msg = `Hola! Soy ${guestName}. ${rsvpStatus === "si" ? "Confirmo asistencia a la boda de Juliana & Mateo. Somos " + guestCount + " persona(s)." : "Lamentablemente no podre asistir a la boda de Juliana & Mateo."}`;
+    const msg = `Hola! Soy ${guestName}. ${rsvpStatus === "si" ? "Confirmo asistencia a la boda de Juliana & Mateo. Somos " + guestCount + " persona(s)." + (menuChoice ? " Menu: " + menuChoice + "." : "") + (songRequest ? " Cancion: " + songRequest : "") : "Lamentablemente no podre asistir a la boda de Juliana & Mateo."}`;
     window.open(`https://wa.me/5491112345678?text=${encodeURIComponent(msg)}`, "_blank");
     setSubmitted(true);
   };
@@ -288,6 +290,121 @@ export default function InvitacionJulianaMateo() {
         </div>
       </section>
 
+      {/* ===== NUESTRA HISTORIA ===== */}
+      <section className="py-16 bg-[#0a0a0a] border-t border-[#d4af37]/10 animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <p className="text-[#d4af37] text-xs tracking-[0.3em] uppercase mb-3">Nuestra Historia</p>
+          <h2 className="text-white text-3xl font-black uppercase tracking-tight mb-8">Como Empezo Todo</h2>
+          <div className="space-y-4 text-white/60 text-sm leading-relaxed">
+            <p>Nos conocimos en una noche de fiesta donde la musica nos junto en la pista. Desde esa primera mirada supimos que algo especial estaba pasando.</p>
+            <p>Despues de anos de aventuras, risas y momentos inolvidables, decidimos que queremos seguir bailando juntos toda la vida.</p>
+          </div>
+          <div className="flex items-center justify-center gap-8 mt-12 flex-wrap">
+            <div className="text-center">
+              <div className="w-14 h-14 rounded-full border border-[#d4af37]/30 flex items-center justify-center mx-auto mb-2">
+                <Heart size={18} className="text-[#d4af37]" />
+              </div>
+              <p className="text-[10px] text-white/40 tracking-wider uppercase">Nos conocimos</p>
+              <p className="text-white text-sm font-bold">2023</p>
+            </div>
+            <div className="w-6 h-px bg-[#d4af37]/30 hidden sm:block"></div>
+            <div className="text-center">
+              <div className="w-14 h-14 rounded-full border border-[#d4af37]/30 flex items-center justify-center mx-auto mb-2">
+                <Sparkles size={18} className="text-[#d4af37]" />
+              </div>
+              <p className="text-[10px] text-white/40 tracking-wider uppercase">Compromiso</p>
+              <p className="text-white text-sm font-bold">2028</p>
+            </div>
+            <div className="w-6 h-px bg-[#d4af37]/30 hidden sm:block"></div>
+            <div className="text-center">
+              <div className="w-14 h-14 rounded-full bg-[#d4af37]/10 border border-[#d4af37]/50 flex items-center justify-center mx-auto mb-2">
+                <Heart size={18} className="text-[#d4af37]" fill="#d4af37" />
+              </div>
+              <p className="text-[10px] text-white/40 tracking-wider uppercase">La Boda</p>
+              <p className="text-white text-sm font-bold">2029</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== ITINERARIO / TIMELINE ===== */}
+      <section className="py-16 bg-black border-t border-[#d4af37]/10 animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <p className="text-[#d4af37] text-xs tracking-[0.3em] uppercase mb-3">Itinerario</p>
+            <h2 className="text-white text-3xl font-black uppercase tracking-tight">Programa del Dia</h2>
+          </div>
+          <div className="relative">
+            <div className="absolute left-6 sm:left-1/2 sm:-translate-x-px top-0 bottom-0 w-px bg-[#d4af37]/20"></div>
+            {[
+              { time: "18:30", title: "Llegada", desc: "Recepcion de invitados" },
+              { time: "19:00", title: "Ceremonia", desc: "Iglesia San Nicolas" },
+              { time: "20:00", title: "Coctel", desc: "Terraza de Casa Colombia" },
+              { time: "21:00", title: "Cena & Brindis", desc: "Salon principal" },
+              { time: "23:00", title: "Fiesta!", desc: "DJ en vivo toda la noche" },
+              { time: "02:00", title: "After", desc: "Para los que aguanten!" },
+            ].map((item, i) => (
+              <div key={i} className="relative flex items-center mb-8 pl-14 sm:pl-0">
+                <div className={`hidden sm:block w-5/12 ${i % 2 === 0 ? "text-right pr-8" : "text-left pl-8 order-3"}`}>
+                  <p className="text-[#d4af37] text-xl font-bold">{item.time}</p>
+                  <h3 className="text-white text-sm font-medium mt-1">{item.title}</h3>
+                  <p className="text-white/40 text-xs mt-0.5">{item.desc}</p>
+                </div>
+                <div className="absolute left-6 sm:static sm:left-auto sm:translate-x-0 -translate-x-1/2 sm:mx-auto w-8 h-8 rounded-full bg-black border-2 border-[#d4af37]/40 flex items-center justify-center z-10">
+                  <div className="w-2 h-2 rounded-full bg-[#d4af37]"></div>
+                </div>
+                <div className={`sm:hidden`}>
+                  <p className="text-[#d4af37] text-lg font-bold">{item.time}</p>
+                  <h3 className="text-white text-sm font-medium">{item.title}</h3>
+                  <p className="text-white/40 text-xs">{item.desc}</p>
+                </div>
+                <div className={`hidden sm:block w-5/12 ${i % 2 === 0 ? "order-3" : ""}`}></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== INTERACTIVE MAP ===== */}
+      <section className="py-16 bg-[#0a0a0a] border-t border-[#d4af37]/10 animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <p className="text-[#d4af37] text-xs tracking-[0.3em] uppercase mb-3">Ubicacion</p>
+            <h2 className="text-white text-3xl font-black uppercase tracking-tight">Como Llegar</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="border border-[#d4af37]/20 rounded-lg overflow-hidden bg-black">
+              <div className="p-4 text-center border-b border-[#d4af37]/10">
+                <h3 className="text-white text-sm font-bold uppercase">Ceremonia</h3>
+                <p className="text-white/40 text-xs mt-1">Iglesia San Nicolas</p>
+              </div>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3350.5!2d-68.84!3d-32.89!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDUzJzI0LjAiUyA2OMKwNTAnMjQuMCJX!5e0!3m2!1ses!2sar!4v1"
+                width="100%" height="180" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="w-full"></iframe>
+              <div className="p-3 text-center">
+                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#d4af37] text-black text-xs font-bold uppercase hover:bg-[#e5c440] transition-colors">
+                  <MapPin size={12} /> Abrir Mapa
+                </a>
+              </div>
+            </div>
+            <div className="border border-[#d4af37]/20 rounded-lg overflow-hidden bg-black">
+              <div className="p-4 text-center border-b border-[#d4af37]/10">
+                <h3 className="text-white text-sm font-bold uppercase">Fiesta</h3>
+                <p className="text-white/40 text-xs mt-1">Casa Colombia</p>
+              </div>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3350.5!2d-68.90!3d-33.03!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDAyJzI0LjAiUyA2OMKwNTQnMDAuMCJX!5e0!3m2!1ses!2sar!4v1"
+                width="100%" height="180" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="w-full"></iframe>
+              <div className="p-3 text-center">
+                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#d4af37] text-black text-xs font-bold uppercase hover:bg-[#e5c440] transition-colors">
+                  <MapPin size={12} /> Abrir Mapa
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ===== EVENT DETAILS ===== */}
       <section className="py-16 bg-black animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
         <div className="max-w-4xl mx-auto px-6">
@@ -404,16 +521,35 @@ export default function InvitacionJulianaMateo() {
                   placeholder="Tu nombre" />
               </div>
               {rsvpStatus === "si" && (
-                <div>
-                  <label className="text-white/50 text-xs block mb-1.5">Cuantos van?</label>
-                  <select value={guestCount} onChange={(e) => setGuestCount(e.target.value)}
-                    className="w-full bg-white/5 border border-[#d4af37]/20 rounded-sm px-4 py-3 text-white text-sm focus:outline-none focus:border-[#d4af37] transition-colors">
-                    <option value="1" className="text-black">1 persona</option>
-                    <option value="2" className="text-black">2 personas</option>
-                    <option value="3" className="text-black">3 personas</option>
-                    <option value="4" className="text-black">4 personas</option>
-                  </select>
-                </div>
+                <>
+                  <div>
+                    <label className="text-white/50 text-xs block mb-1.5">Cuantos van?</label>
+                    <select value={guestCount} onChange={(e) => setGuestCount(e.target.value)}
+                      className="w-full bg-white/5 border border-[#d4af37]/20 rounded-sm px-4 py-3 text-white text-sm focus:outline-none focus:border-[#d4af37] transition-colors">
+                      <option value="1" className="text-black">1 persona</option>
+                      <option value="2" className="text-black">2 personas</option>
+                      <option value="3" className="text-black">3 personas</option>
+                      <option value="4" className="text-black">4 personas</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="text-white/50 text-xs block mb-1.5">Preferencia de menu</label>
+                    <select value={menuChoice} onChange={(e) => setMenuChoice(e.target.value)}
+                      className="w-full bg-white/5 border border-[#d4af37]/20 rounded-sm px-4 py-3 text-white text-sm focus:outline-none focus:border-[#d4af37] transition-colors">
+                      <option value="" className="text-black">Seleccionar...</option>
+                      <option value="carne" className="text-black">Carne</option>
+                      <option value="pollo" className="text-black">Pollo</option>
+                      <option value="vegetariano" className="text-black">Vegetariano</option>
+                      <option value="vegano" className="text-black">Vegano</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="text-white/50 text-xs block mb-1.5">Cancion que no puede faltar (opcional)</label>
+                    <input type="text" value={songRequest} onChange={(e) => setSongRequest(e.target.value)}
+                      className="w-full bg-white/5 border border-[#d4af37]/20 rounded-sm px-4 py-3 text-white text-sm focus:outline-none focus:border-[#d4af37] transition-colors"
+                      placeholder="Que tema queremos que suene?" />
+                  </div>
+                </>
               )}
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <button type="submit" className="flex-1 py-4 bg-[#d4af37] text-black text-sm font-bold tracking-wider uppercase hover:bg-[#e5c440] transition-colors flex items-center justify-center gap-2">
@@ -437,13 +573,31 @@ export default function InvitacionJulianaMateo() {
           <h2 className="text-white text-2xl font-bold uppercase mb-4">Tu presencia es el mejor regalo</h2>
           <p className="text-white/40 text-sm mb-6">Si queres tener un detalle:</p>
           <div className="border border-[#d4af37]/20 rounded-lg p-5 bg-black">
-            <p className="text-[10px] text-[#d4af37] uppercase tracking-wider mb-2">Alias</p>
-            <div className="flex items-center justify-between bg-white/5 rounded-sm px-4 py-2.5">
-              <span className="text-white text-sm font-medium">juliana.mateo.boda</span>
-              <button onClick={copyAlias} className="flex items-center gap-1 text-[#d4af37] hover:text-[#e5c440] transition-colors">
-                {copied ? <Check size={16} /> : <Copy size={16} />}
-                <span className="text-xs">{copied ? "Copiado!" : "Copiar"}</span>
-              </button>
+            <div className="space-y-3">
+              <div>
+                <p className="text-[10px] text-[#d4af37] uppercase tracking-wider mb-1">Alias</p>
+                <div className="flex items-center justify-between bg-white/5 rounded-sm px-4 py-2.5">
+                  <span className="text-white text-sm font-medium">juliana.mateo.boda</span>
+                  <button onClick={copyAlias} className="flex items-center gap-1 text-[#d4af37] hover:text-[#e5c440] transition-colors">
+                    {copied ? <Check size={16} /> : <Copy size={16} />}
+                    <span className="text-xs">{copied ? "Copiado!" : "Copiar"}</span>
+                  </button>
+                </div>
+              </div>
+              <div>
+                <p className="text-[10px] text-[#d4af37] uppercase tracking-wider mb-1">CBU</p>
+                <div className="flex items-center justify-between bg-white/5 rounded-sm px-4 py-2.5">
+                  <span className="text-white/80 text-xs font-medium">0070099-30004098765432-1</span>
+                  <button onClick={() => { navigator.clipboard.writeText("0070099-30004098765432-1"); setCopied(true); setTimeout(() => setCopied(false), 2000); }}
+                    className="text-[#d4af37] hover:text-[#e5c440] transition-colors">
+                    <Copy size={14} />
+                  </button>
+                </div>
+              </div>
+              <div>
+                <p className="text-[10px] text-[#d4af37] uppercase tracking-wider mb-1">Titular</p>
+                <p className="text-white/70 text-sm">Juliana Fernandez / Mateo Rodriguez</p>
+              </div>
             </div>
           </div>
         </div>
