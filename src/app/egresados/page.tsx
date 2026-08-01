@@ -5,7 +5,7 @@ export default function EgresadosPage() {
   useEffect(() => { const o = new IntersectionObserver((es) => { es.forEach((e) => { if (e.isIntersecting) e.target.classList.add("vis"); }); }, { threshold: 0.1 }); document.querySelectorAll(".fu").forEach((el) => o.observe(el)); return () => o.disconnect(); }, []);
   return (<div className="min-h-screen bg-[#0a0a0a] pt-16 lg:pt-20">
 
-    {/* HERO */}
+    {/* HERO - Animated Staggered Intro */}
     <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-[#0a0020] via-[#0d0d0d] to-[#001a0a]"></div>
       <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-15" style={{background:"radial-gradient(circle, #7c3aed, transparent 70%)"}}></div>
@@ -13,24 +13,29 @@ export default function EgresadosPage() {
       <div className="absolute inset-0 opacity-5" style={{backgroundImage:"repeating-linear-gradient(45deg, transparent, transparent 40px, #7c3aed 40px, #7c3aed 41px)"}}></div>
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#7c3aed] via-[#10b981] to-[#7c3aed]"></div>
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        <div className="text-6xl sm:text-7xl mb-6">🎓</div>
-        <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white uppercase leading-none tracking-tighter">
+        {/* 1. Graduation cap - drops from above with elastic bounce */}
+        <div className="text-6xl sm:text-7xl mb-6 hero-cap">🎓</div>
+        {/* 2. Main title - fade up */}
+        <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white uppercase leading-none tracking-tighter hero-title">
           <span>EGRES</span><span className="text-[#10b981]">A</span><span>DOS</span>
         </div>
-        <div className="mt-3 flex items-center justify-center gap-4">
+        {/* 3. Subtitle - fade in */}
+        <div className="mt-3 flex items-center justify-center gap-4 hero-subtitle">
           <div className="h-px flex-1 max-w-[80px] bg-[#7c3aed]"></div>
           <span className="text-[#7c3aed] text-sm font-bold uppercase tracking-[0.5em]">2025</span>
           <div className="h-px flex-1 max-w-[80px] bg-[#7c3aed]"></div>
         </div>
-        <p className="text-white/40 text-sm sm:text-base mt-8 max-w-md mx-auto">Invitaciones digitales para la fiesta de egresados mas epica. Que todos se enteren.</p>
+        <p className="text-white/40 text-sm sm:text-base mt-8 max-w-md mx-auto hero-subtitle">Invitaciones digitales para la fiesta de egresados mas epica. Que todos se enteren.</p>
+        {/* 4. Buttons - from sides */}
         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#disenos" className="bg-[#7c3aed] text-white px-8 py-4 text-sm font-black uppercase tracking-wider hover:bg-[#8b5cf6] transition-colors inline-flex items-center gap-2 justify-center rounded-sm">VER DISENOS <ArrowRight size={16}/></a>
-          <a href="https://wa.me/5491112345678?text=Hola!%20Quiero%20una%20invitacion%20de%20egresados" target="_blank" rel="noopener noreferrer" className="border-2 border-white/20 text-white px-8 py-4 text-sm font-black uppercase tracking-wider hover:bg-white hover:text-black transition-all inline-flex items-center gap-2 justify-center rounded-sm"><MessageCircle size={16}/> CONTACTAR</a>
+          <a href="#disenos" className="hero-btn-left bg-[#7c3aed] text-white px-8 py-4 text-sm font-black uppercase tracking-wider rounded-sm inline-flex items-center gap-2 justify-center hover:scale-[1.03] hover:bg-[#8b5cf6] transition-all duration-300 ease-out">VER DISENOS <ArrowRight size={16}/></a>
+          <a href="https://wa.me/5491112345678?text=Hola!%20Quiero%20una%20invitacion%20de%20egresados" target="_blank" rel="noopener noreferrer" className="hero-btn-right border-2 border-white/20 text-white px-8 py-4 text-sm font-black uppercase tracking-wider rounded-sm inline-flex items-center gap-2 justify-center hover:bg-white hover:text-black transition-all duration-300"><MessageCircle size={16}/> CONTACTAR</a>
         </div>
+        {/* 5. Metrics - staggered */}
         <div className="flex items-center justify-center gap-8 sm:gap-12 mt-14 flex-wrap">
-          <div className="text-center"><p className="text-2xl font-black text-white">300+</p><p className="text-[#10b981]/60 text-xs mt-1">Fiestas</p></div>
-          <div className="text-center"><p className="text-2xl font-black text-white">4.9</p><p className="text-[#10b981]/60 text-xs mt-1"><Star size={10} className="inline text-[#7c3aed]"/> Rating</p></div>
-          <div className="text-center"><p className="text-2xl font-black text-white">24h</p><p className="text-[#10b981]/60 text-xs mt-1">Entrega</p></div>
+          <div className="text-center hero-metric-1"><p className="text-2xl font-black text-white">300+</p><p className="text-[#10b981]/60 text-xs mt-1">Fiestas</p></div>
+          <div className="text-center hero-metric-2"><p className="text-2xl font-black text-white">4.9</p><p className="text-[#10b981]/60 text-xs mt-1"><Star size={10} className="inline text-[#7c3aed]"/> Rating</p></div>
+          <div className="text-center hero-metric-3"><p className="text-2xl font-black text-white">24h</p><p className="text-[#10b981]/60 text-xs mt-1">Entrega</p></div>
         </div>
       </div>
     </section>
@@ -140,6 +145,82 @@ export default function EgresadosPage() {
         <a href="https://wa.me/5491112345678?text=Hola!%20Quiero%20una%20invitacion%20de%20egresados" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#25d366] text-white px-10 py-4 text-sm font-black uppercase hover:bg-[#1da851]"><MessageCircle size={18}/> WHATSAPP</a>
       </div>
     </section>
-    <style jsx global>{`.fu{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}.vis{opacity:1!important;transform:translateY(0)!important}`}</style>
+    <style jsx global>{`
+      .fu{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+      .vis{opacity:1!important;transform:translateY(0)!important}
+
+      /* === HERO STAGGERED ANIMATIONS === */
+      /* Curve: fast start, elegant deceleration */
+      
+      /* 1. Cap - drops from above with elastic bounce */
+      .hero-cap {
+        opacity: 0;
+        transform: translateY(-60px);
+        animation: capDrop 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+      }
+      @keyframes capDrop {
+        0% { opacity: 0; transform: translateY(-60px) scale(0.8); }
+        50% { opacity: 1; transform: translateY(8px) scale(1.05); }
+        70% { transform: translateY(-4px) scale(0.98); }
+        100% { opacity: 1; transform: translateY(0) scale(1); }
+      }
+
+      /* 2. Title - fade up */
+      .hero-title {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+      }
+
+      /* 3. Subtitle - fade in */
+      .hero-subtitle {
+        opacity: 0;
+        transform: translateY(15px);
+        animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards;
+      }
+
+      /* 4. Buttons - from sides */
+      .hero-btn-left {
+        opacity: 0;
+        transform: translateX(-30px);
+        animation: slideFromLeft 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.75s forwards;
+      }
+      .hero-btn-right {
+        opacity: 0;
+        transform: translateX(30px);
+        animation: slideFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.85s forwards;
+      }
+
+      /* 5. Metrics - staggered */
+      .hero-metric-1 {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 1.0s forwards;
+      }
+      .hero-metric-2 {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 1.1s forwards;
+      }
+      .hero-metric-3 {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards;
+      }
+
+      /* Keyframes */
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(var(--ty, 30px)); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes slideFromLeft {
+        from { opacity: 0; transform: translateX(-30px); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+      @keyframes slideFromRight {
+        from { opacity: 0; transform: translateX(30px); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+    `}</style>
   </div>);
 }
