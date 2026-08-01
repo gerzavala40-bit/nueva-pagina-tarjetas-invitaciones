@@ -52,7 +52,7 @@ export default function DespedidasPage() {
     <div className="min-h-screen bg-black overflow-hidden pt-16 lg:pt-20">
       {/* Audio - Los Piratas */}
       <audio ref={audioRef} loop preload="auto">
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg" />
+        <source src="https://raw.githubusercontent.com/gerzavala40-bit/mkdir-public/main/Los%20Aut%C3%A9nticos%20Decadentes%20-%20Los%20Piratas%20(Official%20Video).mp3" type="audio/mpeg" />
       </audio>
 
       {/* Music Prompt Overlay */}
