@@ -51,12 +51,51 @@ export default function EgresadosPage() {
       </div>
     </section>
 
-    {/* QUE INCLUYE */}
-    <section className="py-16 bg-[#050510] border-t border-[#7c3aed]/20">
+    {/* SERVICIOS PREMIUM - Los 12 nuevos */}
+    <section className="py-20 bg-[#050510] border-t border-[#7c3aed]/20">
+      <div className="max-w-7xl mx-auto px-4 fu opacity-0 translate-y-8 transition-all duration-700">
+        <div className="text-center mb-4"><p className="text-[#10b981] text-xs tracking-[0.3em] uppercase mb-3">Servicios Exclusivos</p><h2 className="text-3xl font-black uppercase text-white">Lo que nadie mas ofrece</h2></div>
+        <p className="text-white/40 text-sm text-center mb-12 max-w-lg mx-auto">Herramientas digitales pensadas para la promo. Hacemos que la fiesta sea inolvidable.</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {[
+            {emoji:"🎥",t:"Video Dedicatorias",d:"Cada compañero graba un video corto. Armamos un video grupal emotivo para la fiesta.",tag:"NUEVO",c:"#7c3aed"},
+            {emoji:"📖",t:"Anuario Digital",d:"Perfil de cada egresado: foto, apodo, frase y 'mas probable que...'. Queda online para siempre.",tag:"NUEVO",c:"#10b981"},
+            {emoji:"👑",t:"Votacion Rey/Reina",d:"Encuesta en vivo para elegir rey y reina de la promo. Se revela en la fiesta.",tag:"NUEVO",c:"#ffd700"},
+            {emoji:"🧠",t:"Trivia de la Promo",d:"Juego interactivo: '¿Quien se copio mas?', '¿Quien llegaba siempre tarde?'. Diversion asegurada.",tag:"NUEVO",c:"#ff6b00"},
+            {emoji:"📺",t:"Slideshow Recuerdos",d:"Carrusel automatico de fotos de toda la secundaria con musica. Se proyecta en la fiesta.",tag:"NUEVO",c:"#0088ff"},
+            {emoji:"💬",t:"Muro de Mensajes",d:"Libro de firmas digital. Los invitados dejan mensajes que quedan como recuerdo para siempre.",tag:"NUEVO",c:"#e91e63"},
+            {emoji:"🎵",t:"Playlist Colaborativa",d:"Cada invitado agrega canciones. Se arma la playlist de la fiesta entre toda la promo.",tag:"NUEVO",c:"#00bcd4"},
+            {emoji:"📸",t:"QR Check-in",d:"Al llegar escanean un QR y quedan registrados con nombre y foto. Saben quien llego.",tag:"NUEVO",c:"#4caf50"},
+            {emoji:"🏆",t:"Premios / Superlatives",d:"'Mas probable que sea presidente', 'Mejor dupla', 'El payaso de la clase'. Votacion digital.",tag:"NUEVO",c:"#ff9800"},
+            {emoji:"⏳",t:"Capsula del Tiempo",d:"Cada egresado escribe un mensaje para su yo del futuro. Se abre en 5 o 10 años.",tag:"NUEVO",c:"#9c27b0"},
+            {emoji:"🎟️",t:"Entrada Digital + QR",d:"Cada invitado recibe su ticket personalizado con QR para el ingreso. Evita colados.",tag:"NUEVO",c:"#f44336"},
+            {emoji:"💸",t:"Split de Gastos",d:"Calculadora que divide los gastos del evento entre todos. DJ, salon, bebida, todo clarito.",tag:"NUEVO",c:"#2196f3"},
+          ].map((s)=>(
+            <div key={s.t} className="bg-[#0a0a14] rounded-xl p-5 border border-white/5 hover:border-opacity-40 transition-all group relative overflow-hidden" style={{"--hc":s.c} as React.CSSProperties}>
+              <div className="absolute top-0 right-0 w-20 h-20 rounded-full opacity-5 group-hover:opacity-10 transition-opacity" style={{background:`radial-gradient(circle,${s.c},transparent)`}}></div>
+              <div className="flex items-start gap-3 relative z-10">
+                <div className="text-2xl flex-shrink-0">{s.emoji}</div>
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <h3 className="text-white font-bold text-sm">{s.t}</h3>
+                    <span className="text-[8px] font-bold px-1.5 py-0.5 rounded-sm uppercase tracking-wider" style={{backgroundColor:s.c+"20",color:s.c}}>{s.tag}</span>
+                  </div>
+                  <p className="text-white/40 text-xs leading-relaxed">{s.d}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* QUE INCLUYE - Basico */}
+    <section className="py-16 bg-[#0a0a0a] border-t border-[#7c3aed]/20">
       <div className="max-w-4xl mx-auto px-4 fu opacity-0 translate-y-8 transition-all duration-700">
-        <h2 className="text-2xl font-black uppercase text-white text-center mb-10">QUE INCLUYE</h2>
+        <h2 className="text-2xl font-black uppercase text-white text-center mb-3">TODAS LAS INVITACIONES INCLUYEN</h2>
+        <p className="text-white/30 text-xs text-center mb-8">Funciones base en todos los planes</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {["Cuenta regresiva en vivo","Mapa interactivo del salon","RSVP + confirmacion WhatsApp","Musica al abrir la invitacion","Party Cam (fotos en vivo)","Party Chat para toda la promo","Itinerario de la noche","Vaquita para la fiesta","Encuestas para el grupo","Galeria de fotos de la promo"].map((f)=>(
+          {["Cuenta regresiva en vivo","Mapa interactivo del salon","RSVP + confirmacion WhatsApp","Musica al abrir la invitacion","Party Cam (fotos en vivo)","Party Chat para toda la promo","Itinerario de la noche","Vaquita con alias/CBU","Galeria de fotos","Envios ilimitados por WhatsApp"].map((f)=>(
             <div key={f} className="flex items-center gap-3 py-3 px-4 border-l-2 border-[#7c3aed] bg-white/5"><CheckCircle2 size={14} className="text-[#10b981] flex-shrink-0"/><span className="text-white/70 text-sm">{f}</span></div>
           ))}
         </div>
@@ -81,7 +120,7 @@ export default function EgresadosPage() {
         <h2 className="text-2xl font-black uppercase text-white text-center mb-3">PRECIOS</h2>
         <p className="text-white/30 text-sm text-center mb-10">30% OFF por transferencia</p>
         <div className="grid md:grid-cols-3 gap-4">
-          {[{n:"BASICO",p:"25K",c:"#10b981",f:["Countdown + mapa","RSVP WhatsApp","Vaquita","Envios ilim."]},{n:"PREMIUM",p:"45K",c:"#7c3aed",pop:true,f:["+ RSVP propio","+ Musica + Fotos","+ Party Cam","+ Party Chat"]},{n:"PLUS",p:"65K",c:"#ffd700",f:["+ Personalizada","+ Dominio","+ Encuestas","+ Soporte VIP"]}].map(pl=>(
+          {[{n:"BASICO",p:"25K",c:"#10b981",f:["Cuenta regresiva + mapa","RSVP WhatsApp","Vaquita + itinerario","Musica al abrir","Envios ilimitados"]},{n:"PREMIUM",p:"55K",c:"#7c3aed",pop:true,f:["Todo Basico","RSVP propio + Party Cam","Party Chat + Galeria","Playlist Colaborativa","Muro de Mensajes","QR Check-in"]},{n:"ULTIMATE",p:"85K",c:"#ffd700",f:["Todo Premium","Video Dedicatorias","Anuario Digital","Trivia + Superlatives","Votacion Rey/Reina","Capsula del Tiempo","Entrada Digital QR","Split de Gastos","Slideshow Recuerdos"]}].map(pl=>(
             <div key={pl.n} className={`p-6 ${pl.pop?"border-2":"bg-white/5 border border-white/10"} text-white`} style={{borderColor:pl.pop?pl.c:undefined}}>
               {pl.pop&&<p className="text-[10px] font-black tracking-widest mb-2" style={{color:pl.c}}>★ POPULAR</p>}
               <h3 className="font-black text-lg">{pl.n}</h3><p className="text-3xl font-black my-3">${pl.p}</p>
