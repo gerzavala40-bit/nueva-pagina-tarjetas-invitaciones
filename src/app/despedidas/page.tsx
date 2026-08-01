@@ -5,7 +5,7 @@ import Link from "next/link";
 import {
   PartyPopper, Users, Calendar, MapPin, Music, Camera,
   MessageCircle, Sparkles, Vote, CreditCard, Clock,
-  Wine, Star, ArrowRight, CheckCircle2, Zap, Play, Pause,
+  Wine, Star, ArrowRight, CheckCircle2, Zap,
   Volume2, VolumeX,
 } from "lucide-react";
 import { templates } from "@/data/templates";
@@ -15,22 +15,39 @@ const despedidaTemplates = templates.filter((t) => t.type === "despedida");
 
 export default function DespedidasPage() {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [showMusicPrompt, setShowMusicPrompt] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  const startMusic = () => {
-    if (audioRef.current) {
-      audioRef.current.play();
-      setIsPlaying(true);
-      setShowMusicPrompt(false);
+  // Autoplay from second 21
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (audio) {
+      audio.currentTime = 21;
+      audio.volume = 0.7;
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          setIsPlaying(true);
+        }).catch(() => {
+          // Autoplay blocked by browser - user needs to interact first
+          const handleClick = () => {
+            if (audioRef.current) {
+              audioRef.current.currentTime = 21;
+              audioRef.current.play();
+              setIsPlaying(true);
+            }
+            document.removeEventListener("click", handleClick);
+          };
+          document.addEventListener("click", handleClick);
+        });
+      }
     }
-  };
+  }, []);
 
-  const togglePlay = () => {
+  const toggleMute = () => {
     if (audioRef.current) {
-      if (isPlaying) audioRef.current.pause();
-      else audioRef.current.play();
-      setIsPlaying(!isPlaying);
+      audioRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
     }
   };
 
@@ -55,38 +72,16 @@ export default function DespedidasPage() {
         <source src="https://raw.githubusercontent.com/gerzavala40-bit/mkdir-public/main/Los%20Aut%C3%A9nticos%20Decadentes%20-%20Los%20Piratas%20(Official%20Video).mp3" type="audio/mpeg" />
       </audio>
 
-      {/* Music Prompt Overlay */}
-      {showMusicPrompt && (
-        <div className="fixed inset-0 z-[200] bg-black/95 backdrop-blur-sm flex items-center justify-center px-6">
-          <div className="text-center max-w-sm">
-            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#ff0040] to-[#0066ff] flex items-center justify-center mx-auto mb-6 animate-pulse">
-              <Music size={32} className="text-white" />
-            </div>
-            <h2 className="text-white text-2xl font-black uppercase tracking-tight mb-2">Somos Los Piratas</h2>
-            <p className="text-white/50 text-sm mb-8">Esta pagina tiene musica. Queres activarla?</p>
-            <div className="flex flex-col gap-3">
-              <button onClick={startMusic}
-                className="w-full py-4 bg-gradient-to-r from-[#ff0040] to-[#cc0033] text-white font-bold text-sm uppercase tracking-wider rounded-full hover:from-[#ff1a57] hover:to-[#ff0040] transition-all flex items-center justify-center gap-2">
-                <Play size={18} /> Dale que suene!
-              </button>
-              <button onClick={() => setShowMusicPrompt(false)}
-                className="w-full py-3 border border-white/20 text-white/50 text-sm uppercase tracking-wider rounded-full hover:text-white hover:border-white/40 transition-all">
-                Entrar sin musica
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Music Prompt Overlay - removed, autoplay from sec 21 */}
 
-      {/* Floating Music Control */}
-      {!showMusicPrompt && (
-        <div className="fixed bottom-6 left-6 z-50">
-          <button onClick={togglePlay}
-            className="w-12 h-12 rounded-full bg-black/80 border border-[#ff0040]/50 backdrop-blur-sm text-[#ff0040] flex items-center justify-center shadow-lg shadow-[#ff0040]/20 hover:bg-[#ff0040] hover:text-white transition-colors">
-            {isPlaying ? <Pause size={18} /> : <Play size={18} />}
-          </button>
-        </div>
-      )}
+      {/* Floating Mute Button */}
+      <div className="fixed bottom-6 left-6 z-50">
+        <button onClick={toggleMute}
+          className={`w-12 h-12 rounded-full backdrop-blur-sm flex items-center justify-center shadow-lg transition-colors ${isMuted ? "bg-white/10 border border-white/20 text-white/50" : "bg-black/80 border border-[#ff0040]/50 text-[#ff0040] shadow-[#ff0040]/20"}`}
+          aria-label={isMuted ? "Activar sonido" : "Silenciar"}>
+          {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+        </button>
+      </div>
 
 
       {/* ===== HERO - PIRATAS STYLE ===== */}
