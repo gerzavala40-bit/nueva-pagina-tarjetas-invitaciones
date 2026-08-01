@@ -26,6 +26,7 @@ export default function Header() {
   const navLinks = [
     { href: "/templates", label: "Plantillas" },
     { href: "/despedidas", label: "Despedidas" },
+    { href: "/egresados", label: "Egresados" },
     { href: "/features", label: "Funciones" },
     { href: "/pricing", label: "Precios" },
   ];
