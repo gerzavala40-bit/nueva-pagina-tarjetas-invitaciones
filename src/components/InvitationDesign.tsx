@@ -404,90 +404,79 @@ export default function InvitationDesign({
         </div>
       );
 
-    case "neon":
+    case "labiosneon":
       return (
-        <div className={baseClass} style={{ background: `linear-gradient(135deg, ${template.colors.background}, ${template.colors.secondary})` }}>
-          <div className="absolute inset-0 opacity-20" style={{ background: "radial-gradient(circle at 30% 20%, #ff00ff33, transparent 50%), radial-gradient(circle at 70% 80%, #00ffff33, transparent 50%)" }}></div>
+        <div className={baseClass} style={{ backgroundColor: "#000" }}>
+          <div className="absolute inset-0 opacity-30" style={{ background: "radial-gradient(circle at 50% 40%, #ff004080, transparent 60%)" }}></div>
           <div className="text-center relative z-10">
-            <p className={`${subSize} tracking-[0.4em] uppercase mb-4`} style={{ color: template.colors.accent, textShadow: `0 0 10px ${template.colors.accent}` }}>Despedida de</p>
-            <p className={`${nameSize} font-black uppercase`} style={{ color: template.colors.text, textShadow: `0 0 20px ${template.colors.accent}40` }}>LUCIA</p>
-            <div className="my-3" style={{ color: template.colors.accent }}>&#9733;</div>
-            <p className={`${subSize} tracking-wider`} style={{ color: "#00ffff" }}>Ultima noche de soltera</p>
-            {showFull && <p className="text-xs mt-3 opacity-60" style={{ color: template.colors.text }}>Sabado 21:00 - Club Neon</p>}
+            <div className="text-5xl mb-4" style={{ filter: "drop-shadow(0 0 15px #ff0040)" }}>👄</div>
+            <p className={`${subSize} tracking-[0.4em] uppercase mb-3`} style={{ color: "#ff0040", textShadow: "0 0 10px #ff0040" }}>Despedida de</p>
+            <p className={`font-[family-name:var(--font-playfair)] ${nameSize} italic`} style={{ color: "#fff" }}>Valentina</p>
+            <div className="w-8 h-px mx-auto my-3" style={{ backgroundColor: "#ff0040", boxShadow: "0 0 8px #ff0040" }}></div>
+            <p className={`${subSize} tracking-wider`} style={{ color: "#ff0040" }}>Ultima noche de soltera</p>
+            {showFull && <p className="text-xs mt-3 opacity-50 text-white">Sabado 23:00 - Secret Bar</p>}
+          </div>
+        </div>
+      );
+
+    case "fortparty":
+      return (
+        <div className={baseClass} style={{ backgroundColor: "#000" }}>
+          <div className="absolute inset-4 border-2 border-dashed opacity-30" style={{ borderColor: "#ffd700" }}></div>
+          <div className="absolute inset-0 opacity-10" style={{ background: "radial-gradient(circle at 50% 50%, #ffd700, transparent 70%)" }}></div>
+          <div className="text-center relative z-10">
+            <p className={`${subSize} tracking-[0.5em] uppercase mb-2`} style={{ color: "#ffd700" }}>La fiesta del ano</p>
+            <p className={`${nameSize} font-black uppercase`} style={{ color: "#fff", textShadow: "0 0 10px #ffd70040" }}>DESPEDIDA</p>
+            <div className="text-3xl my-2">🍾</div>
+            <p className={`${subSize} tracking-wider uppercase font-bold`} style={{ color: "#ffd700" }}>Nivel Fort</p>
+            {showFull && <p className="text-xs mt-3 opacity-50 text-white">VIP &bull; Champagne &bull; Sin limites</p>}
+          </div>
+        </div>
+      );
+
+    case "neondrunk":
+      return (
+        <div className={baseClass} style={{ background: "linear-gradient(180deg, #050010, #0a0020)" }}>
+          <div className="absolute inset-0 opacity-15" style={{ background: "radial-gradient(circle at 30% 60%, #00ffcc40, transparent 50%), radial-gradient(circle at 70% 30%, #ff00ff30, transparent 50%)" }}></div>
+          <div className="text-center relative z-10">
+            <p className={`${subSize} tracking-[0.3em] uppercase mb-3`} style={{ color: "#00ffcc", textShadow: "0 0 8px #00ffcc" }}>Drunk in Love</p>
+            <p className={`${nameSize} font-black uppercase`} style={{ color: "#fff", textShadow: "0 0 15px #00ffcc30" }}>CAMILA</p>
+            <div className="my-3 text-xl" style={{ textShadow: "0 0 10px #00ffcc" }}>🍸</div>
+            <p className={`${subSize} tracking-wider`} style={{ color: "#00ffcc" }}>Noche de tragos y baile</p>
+            {showFull && <p className="text-xs mt-3 opacity-50 text-white">Viernes 22:00 - Neon Bar</p>}
           </div>
         </div>
       );
 
     case "pinkglam":
       return (
-        <div className={baseClass} style={{ background: `linear-gradient(180deg, ${template.colors.background}, #2d0a2e)` }}>
-          <div className="absolute top-4 left-4 w-12 h-12 rounded-full opacity-20" style={{ background: `radial-gradient(circle, ${template.colors.accent}, transparent)` }}></div>
+        <div className={baseClass} style={{ background: "linear-gradient(180deg, #1a0a1a, #2d0a2e)" }}>
+          <div className="absolute top-4 left-4 w-12 h-12 rounded-full opacity-20" style={{ background: "radial-gradient(circle, #ff1493, transparent)" }}></div>
           <div className="absolute bottom-4 right-4 w-16 h-16 rounded-full opacity-15" style={{ background: "radial-gradient(circle, #ff69b4, transparent)" }}></div>
           <div className="text-center relative z-10">
-            <p className={`${subSize} tracking-[0.3em] uppercase mb-3`} style={{ color: template.colors.accent }}>Bride to be</p>
-            <p className={`font-[family-name:var(--font-playfair)] ${nameSize} italic`} style={{ color: template.colors.text }}>Carolina</p>
+            <p className={`${subSize} tracking-[0.3em] uppercase mb-3`} style={{ color: "#ff1493" }}>Bride to be</p>
+            <p className={`font-[family-name:var(--font-playfair)] ${nameSize} italic`} style={{ color: "#fff" }}>Carolina</p>
             <div className="flex items-center justify-center gap-2 my-3">
-              <div className="w-6 h-px" style={{ backgroundColor: template.colors.accent }}></div>
-              <span style={{ color: template.colors.accent }}>&#9830;</span>
-              <div className="w-6 h-px" style={{ backgroundColor: template.colors.accent }}></div>
+              <div className="w-6 h-px" style={{ backgroundColor: "#ff1493" }}></div>
+              <span style={{ color: "#ff1493" }}>&#10047;</span>
+              <div className="w-6 h-px" style={{ backgroundColor: "#ff1493" }}></div>
             </div>
-            <p className={`${subSize} italic`} style={{ color: "#ff69b4" }}>La ultima fiesta de soltera</p>
-            {showFull && <p className="text-xs mt-3 opacity-60" style={{ color: template.colors.text }}>Viernes 22:00 - Rooftop Bar</p>}
+            <p className={`${subSize} italic`} style={{ color: "#ff69b4" }}>Girls night out</p>
+            {showFull && <p className="text-xs mt-3 opacity-50 text-white">Sabado 21:00 - Rooftop Glam</p>}
           </div>
         </div>
       );
 
-    case "vegas":
+    case "piratanight":
       return (
-        <div className={baseClass} style={{ backgroundColor: template.colors.background }}>
-          <div className="absolute inset-6 border opacity-30" style={{ borderColor: template.colors.accent }}></div>
+        <div className={baseClass} style={{ background: "linear-gradient(180deg, #000510, #001040)" }}>
+          <div className="absolute inset-0 opacity-20" style={{ background: "radial-gradient(circle at 50% 30%, #0066ff40, transparent 60%), radial-gradient(circle at 50% 80%, #ff004030, transparent 50%)" }}></div>
           <div className="text-center relative z-10">
-            <p className={`${subSize} tracking-[0.5em] uppercase mb-4`} style={{ color: template.colors.accent }}>All in</p>
-            <p className={`${nameSize} font-black uppercase`} style={{ color: template.colors.text }}>MARTIN</p>
-            <div className="my-3 text-lg" style={{ color: template.colors.accent }}>&#9824; &#9829;</div>
-            <p className={`${subSize} tracking-wider uppercase`} style={{ color: template.colors.accent }}>Noche de casino</p>
-            {showFull && <p className="text-xs mt-3 opacity-60" style={{ color: template.colors.text }}>Sabado 22:00 - Casino Royal</p>}
-          </div>
-        </div>
-      );
-
-    case "tropical":
-      return (
-        <div className={baseClass} style={{ background: `linear-gradient(180deg, ${template.colors.background}, #003030)` }}>
-          <div className="text-center relative z-10">
-            <p className={`${subSize} tracking-[0.3em] uppercase mb-3`} style={{ color: template.colors.accent }}>Pool Party</p>
-            <p className={`font-[family-name:var(--font-playfair)] ${nameSize} italic`} style={{ color: template.colors.text }}>Despedida de Sol</p>
-            <div className="my-3 text-lg" style={{ color: template.colors.accent }}>&#9728;</div>
-            <p className={`${subSize} tracking-wider`} style={{ color: "#4dd0e1" }}>Pileta, sol y diversion</p>
-            {showFull && <p className="text-xs mt-3 opacity-60" style={{ color: template.colors.text }}>Domingo 15:00 - Casa de Playa</p>}
-          </div>
-        </div>
-      );
-
-    case "disco":
-      return (
-        <div className={baseClass} style={{ background: `linear-gradient(135deg, ${template.colors.background}, ${template.colors.secondary})` }}>
-          <div className="absolute inset-0 opacity-10" style={{ background: "conic-gradient(from 0deg, #ff0000, #ff8800, #ffff00, #00ff00, #0088ff, #8800ff, #ff0000)" }}></div>
-          <div className="text-center relative z-10">
-            <p className={`${subSize} tracking-[0.3em] uppercase mb-3`} style={{ color: template.colors.accent }}>Disco Fever</p>
-            <p className={`${nameSize} font-black uppercase`} style={{ color: template.colors.text }}>VALE</p>
-            <div className="my-3 text-lg">&#127898;</div>
-            <p className={`${subSize} tracking-wider italic`} style={{ color: template.colors.accent }}>A bailar toda la noche</p>
-            {showFull && <p className="text-xs mt-3 opacity-60" style={{ color: template.colors.text }}>Sabado 23:00 - Studio 54</p>}
-          </div>
-        </div>
-      );
-
-    case "bros":
-      return (
-        <div className={baseClass} style={{ background: `linear-gradient(180deg, ${template.colors.background}, ${template.colors.secondary})` }}>
-          <div className="absolute inset-6 border border-dashed opacity-20" style={{ borderColor: template.colors.accent }}></div>
-          <div className="text-center relative z-10">
-            <p className={`${subSize} tracking-[0.4em] uppercase mb-3`} style={{ color: template.colors.accent }}>Ultima noche</p>
-            <p className={`${nameSize} font-black uppercase`} style={{ color: template.colors.text }}>NICO</p>
-            <div className="my-3 text-lg" style={{ color: template.colors.accent }}>&#127866;</div>
-            <p className={`${subSize} tracking-wider uppercase`} style={{ color: template.colors.accent }}>Se nos casa el loco</p>
-            {showFull && <p className="text-xs mt-3 opacity-60" style={{ color: template.colors.text }}>Viernes 20:00 - Asado en casa</p>}
+            <p className={`${subSize} tracking-[0.4em] uppercase mb-3`} style={{ color: "#0088ff", textShadow: "0 0 8px #0066ff" }}>Somos los</p>
+            <p className={`${nameSize} font-black uppercase`} style={{ color: "#fff", textShadow: "0 0 20px #0066ff30" }}>PIRATAS</p>
+            <div className="my-3 text-xl" style={{ color: "#ff0040", textShadow: "0 0 10px #ff0040" }}>&#9760;</div>
+            <p className={`${subSize} tracking-wider`} style={{ color: "#ff0040" }}>La vida pirata es la vida mejor</p>
+            {showFull && <p className="text-xs mt-3 opacity-50 text-white">Noche eterna &bull; Sin reglas</p>}
           </div>
         </div>
       );
