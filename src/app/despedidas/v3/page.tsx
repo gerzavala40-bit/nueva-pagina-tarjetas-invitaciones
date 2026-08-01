@@ -83,7 +83,7 @@ export default function DespedidasV3() {
         </div>
       </section>
 
-      {/* PLANTILLAS - DARK GRID */}
+      {/* PLANTILLAS - REAL DEMOS */}
       <section className="py-20 bg-black border-t border-[#ff6b00]/20" id="plantillas">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fade-up opacity-0 translate-y-8 transition-all duration-700">
           <div className="flex items-center gap-4 mb-12">
@@ -91,9 +91,67 @@ export default function DespedidasV3() {
             <h2 className="text-2xl font-black uppercase text-white tracking-tight">DISENOS</h2>
             <div className="h-px flex-1 bg-[#ff6b00]/20"></div>
           </div>
+          <p className="text-white/40 text-sm text-center mb-10">Hace click en cualquiera para ver la invitacion real funcionando</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {despedidaTemplates.map((t) => <InvitationCard key={t.id} template={t} />)}
+            {/* Demo 1 - Labios Neon */}
+            <a href="/invitacion/despedida-lucia" className="group block">
+              <div className="relative aspect-[3/4] rounded-lg overflow-hidden border-2 border-[#ff0040]/20 hover:border-[#ff0040] transition-all">
+                <div className="absolute inset-0 bg-gradient-to-b from-[#1a0010] via-black to-black"></div>
+                <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full opacity-20" style={{background:"radial-gradient(circle,#ff0040,transparent)"}}></div>
+                <div className="relative z-10 h-full flex flex-col items-center justify-center text-center p-6">
+                  <div className="text-5xl mb-4" style={{filter:"drop-shadow(0 0 20px #ff0040)"}}>👄</div>
+                  <p className="text-[#ff0040] text-[10px] tracking-[0.4em] uppercase mb-2">Despedida de soltera</p>
+                  <p className="text-white text-xl font-black uppercase">LUCIA</p>
+                  <p className="text-white/40 text-xs mt-2">Labios Neon &bull; Nocturno</p>
+                </div>
+                <div className="absolute inset-0 bg-[#ff0040]/0 group-hover:bg-[#ff0040]/10 transition-all flex items-end justify-center pb-6">
+                  <span className="opacity-0 group-hover:opacity-100 text-white text-xs font-bold uppercase tracking-wider bg-[#ff0040] px-4 py-2 transition-opacity">Ver Demo →</span>
+                </div>
+              </div>
+              <p className="text-white/60 text-sm font-bold mt-3">Labios Neon</p>
+              <p className="text-white/30 text-xs">Sensual &bull; Nocturno &bull; Glitter</p>
+            </a>
+
+            {/* Demo 2 - Fort Party */}
+            <a href="/invitacion/despedida-martin" className="group block">
+              <div className="relative aspect-[3/4] rounded-lg overflow-hidden border-2 border-[#ffd700]/20 hover:border-[#ffd700] transition-all">
+                <div className="absolute inset-0 bg-black"></div>
+                <div className="absolute inset-6 border-2 border-dashed opacity-15" style={{borderColor:"#ffd700"}}></div>
+                <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full opacity-10" style={{background:"radial-gradient(circle,#ffd700,transparent)"}}></div>
+                <div className="relative z-10 h-full flex flex-col items-center justify-center text-center p-6">
+                  <div className="text-5xl mb-4">🍾</div>
+                  <p className="text-[#ffd700] text-[10px] tracking-[0.4em] uppercase mb-2">Despedida de soltero</p>
+                  <p className="text-white text-xl font-black uppercase">MARTIN</p>
+                  <p className="text-white/40 text-xs mt-2">Fort Party &bull; Opulencia</p>
+                </div>
+                <div className="absolute inset-0 bg-[#ffd700]/0 group-hover:bg-[#ffd700]/10 transition-all flex items-end justify-center pb-6">
+                  <span className="opacity-0 group-hover:opacity-100 text-black text-xs font-bold uppercase tracking-wider bg-[#ffd700] px-4 py-2 transition-opacity">Ver Demo →</span>
+                </div>
+              </div>
+              <p className="text-white/60 text-sm font-bold mt-3">Fort Party</p>
+              <p className="text-white/30 text-xs">Dorado &bull; VIP &bull; Champagne</p>
+            </a>
+
+            {/* Demo 3 - Pirata Night */}
+            <a href="/invitacion/despedida-vale" className="group block">
+              <div className="relative aspect-[3/4] rounded-lg overflow-hidden border-2 border-[#0066ff]/20 hover:border-[#0066ff] transition-all">
+                <div className="absolute inset-0 bg-gradient-to-b from-[#000820] via-[#000510] to-black"></div>
+                <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full opacity-15" style={{background:"radial-gradient(circle,#0066ff,transparent)"}}></div>
+                <div className="relative z-10 h-full flex flex-col items-center justify-center text-center p-6">
+                  <div className="text-5xl mb-4" style={{textShadow:"0 0 20px #0066ff"}}>☠️</div>
+                  <p className="text-[#0088ff] text-[10px] tracking-[0.4em] uppercase mb-2">Somos los piratas</p>
+                  <p className="text-white text-xl font-black uppercase">VALE</p>
+                  <p className="text-white/40 text-xs mt-2">Pirata Night &bull; Sin reglas</p>
+                </div>
+                <div className="absolute inset-0 bg-[#0066ff]/0 group-hover:bg-[#0066ff]/10 transition-all flex items-end justify-center pb-6">
+                  <span className="opacity-0 group-hover:opacity-100 text-white text-xs font-bold uppercase tracking-wider bg-[#0066ff] px-4 py-2 transition-opacity">Ver Demo →</span>
+                </div>
+              </div>
+              <p className="text-white/60 text-sm font-bold mt-3">Pirata Night</p>
+              <p className="text-white/30 text-xs">Azul &bull; Rojo &bull; Los Piratas</p>
+            </a>
           </div>
+          <p className="text-center mt-10 text-white/30 text-xs">Cada diseño es 100% personalizable con tus datos, colores y musica.</p>
         </div>
       </section>
 
